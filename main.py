@@ -1,6 +1,12 @@
-import os
+import os, logging
 from flask import Flask, request, render_template, jsonify
 from twitter import TwitterClient
+
+logging.basicConfig(filename='logging.log',
+                    format='%(levelname)s - %(asctime)s - %(name)s - %(message)s',
+                    datefmt='%m/%d/%Y %H:%M:%S',
+                    level= logging.INFO)
+
 
 app = Flask(__name__)
 
@@ -9,17 +15,23 @@ api = TwitterClient('Data')
 
 # abc xyz
 
+logger= logging.getLogger(__name__)
+
 def strtobool(v):
     return v.lower() in ['yes', 'true', 't', 'l']
 
 
 @app.route('/')
 def index():
+    logger.info('** Home page accessed **')
+    logger.debug('** This is not debug **')
     return render_template('index.html')
 
 
 @app.route('/tweets')
 def tweets():
+    logger.info('** Tweet page accessed **')
+    logger.error('** This is the error **')
     retweets_only = request.args.get('retweets_only')
     api.set_retweet_checking(strtobool(retweets_only.lower()))
     with_sentiment = request.args.get('with_sentiment')
