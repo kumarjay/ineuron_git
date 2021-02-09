@@ -24,7 +24,7 @@ phases:
       - docker push $REPOSITORY_URI:$IMAGE_TAG
       - echo writing image to defined file
       - ImageURI=$(cat imageDetail.json | jq -r '.ImageURI')
-      - printf '[{"name":"jay-container","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinations.json
+      - printf '[{"name":"jay-container","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
       - sed -i -e "s|jay-container|jay-container01|g" imagedefinitions.json
       - sed -i -e "s|IMAGE_URI|$ImageURI|g" imagedefinitions.json
       - cat imagedefinations.json
