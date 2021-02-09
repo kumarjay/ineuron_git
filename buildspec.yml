@@ -25,7 +25,7 @@ phases:
       - echo writing image to defined file
       - ImageURI=$(cat imageDetail.json | jq -r '.ImageURI')
       - printf '[{"name":"jay-container","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
-      - sed -i -e "s|jay-container|jay-container01|g" imagedefinitions.json
+      - sed -i -e "s|jay-container|jay-container|g" imagedefinitions.json
       - sed -i -e "s|IMAGE_URI|$ImageURI|g" imagedefinitions.json
       - cat imagedefinitions.json
 artifacts:
