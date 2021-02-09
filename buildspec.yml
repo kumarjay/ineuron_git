@@ -24,6 +24,4 @@ phases:
       - docker push $REPOSITORY_URI:$IMAGE_TAG
       - echo writing image to defined file
       - printf '[{"name":"Petr","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
-      - cat imagedefinations.json
-artifacts:
-  files: imagedefinations.json
+      
