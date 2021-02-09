@@ -27,6 +27,6 @@ phases:
       - printf '[{"name":"jay-container","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
       - sed -i -e "s|jay-container|jay-container01|g" imagedefinitions.json
       - sed -i -e "s|IMAGE_URI|$ImageURI|g" imagedefinitions.json
-      - cat imagedefinations.json
+      - cat imagedefinitions.json
 artifacts:
-    files: imagedefinations.json
+    files: imagedefinitions.json
